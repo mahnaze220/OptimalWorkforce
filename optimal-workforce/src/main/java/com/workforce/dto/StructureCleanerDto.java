@@ -1,7 +1,5 @@
 package com.workforce.dto;
 
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -12,16 +10,18 @@ import io.swagger.annotations.ApiModelProperty;
  *
  */
 
-@Validated
 public class StructureCleanerDto {
 
 	@JsonProperty("room")
+	@ApiModelProperty(notes = "number of romms in a structure")
 	private Integer room;
 
 	@JsonProperty("senior")
+	@ApiModelProperty(notes = "number of senior cleaners for every structure")
 	private Integer numberOfSeniors;
 
 	@JsonProperty("junior")
+	@ApiModelProperty(notes = "number of junior cleaners for every structure")
 	private Integer numberOfJuniors;
 
 	public StructureCleanerDto(Integer room, Integer numberOfSeniors, Integer numberOfJuniors) {
@@ -34,8 +34,7 @@ public class StructureCleanerDto {
 	/**
 	 * Get room
 	 * @return room
-	 **/
-	@ApiModelProperty(value = "")
+	 **/	
 	public Integer getRoom() {
 		return room;
 	}
@@ -48,7 +47,6 @@ public class StructureCleanerDto {
 	 * Get numberOfSeniors
 	 * @return numberOfSeniors
 	 **/
-	@ApiModelProperty(value = "")
 	public Integer getNumberOfSeniors() {
 		return numberOfSeniors;
 	}
@@ -61,7 +59,6 @@ public class StructureCleanerDto {
 	 * Get numberOfJuniors
 	 * @return numberOfJuniors
 	 **/
-	@ApiModelProperty(value = "")
 	public Integer getNumberOfJuniors() {
 		return numberOfJuniors;
 	}
@@ -111,6 +108,5 @@ public class StructureCleanerDto {
 		} else if (!room.equals(other.room))
 			return false;
 		return true;
-	}
-	
+	}	
 }

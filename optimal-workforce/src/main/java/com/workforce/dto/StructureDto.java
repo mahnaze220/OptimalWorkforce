@@ -2,8 +2,6 @@ package com.workforce.dto;
 
 import java.util.Arrays;
 
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -14,16 +12,18 @@ import io.swagger.annotations.ApiModelProperty;
  *
  */
 
-@Validated
 public class StructureDto {
 
-	@JsonProperty("ROOM_LIST")
+	@JsonProperty("room_list")
+	@ApiModelProperty(notes = "array of rooms for every structure")
 	private Integer[] rooms;
 
-	@JsonProperty("SENIOR_CAPACITY")
+	@JsonProperty("senior_capacity")
+	@ApiModelProperty(notes = "capacity of senior cleaner")
 	private Integer seniorCapacity;
 
-	@JsonProperty("JUNIOR_CAPACITY")
+	@JsonProperty("junior_capacity")
+	@ApiModelProperty(notes = "capacity of junior cleaner")
 	private Integer juniorCapacity;
 
 	public StructureDto(Integer[] rooms, Integer seniorCapacity, Integer juniorCapacity) {
@@ -37,7 +37,6 @@ public class StructureDto {
 	 * Get Rooms
 	 * @return Rooms
 	 **/
-	@ApiModelProperty(value = "")
 	public Integer[] getRooms() {
 		return rooms;
 	}
@@ -50,7 +49,6 @@ public class StructureDto {
 	 * Get SeniorCapacity
 	 * @return SeniorCapacity
 	 **/
-	@ApiModelProperty(value = "")
 	public Integer getSeniorCapacity() {
 		return seniorCapacity;
 	}
@@ -63,7 +61,6 @@ public class StructureDto {
 	 * Get JuniorCapacity
 	 * @return JuniorCapacity
 	 **/
-	@ApiModelProperty(value = "")
 	public Integer getJuniorCapacity() {
 		return juniorCapacity;
 	}

@@ -46,6 +46,16 @@ public class CleanerServiceTest {
 		Assert.assertEquals(result, mockSecondStructureCleaners());
 	}
 
+	@Test
+	public void getOptimizedCleanersForNegativeRoom() {
+		Integer[] rooms = {-24,28};
+		int seniorCapacity = 11;
+		int juniorCapacity = 6;
+
+		List<StructureCleaner> result = cleanerService.getOptimizedCleaners(rooms, seniorCapacity, juniorCapacity);
+		Assert.assertEquals(result, mockNegativeStructureCleaners());
+	}
+
 	private List<StructureCleaner> mockFirstStructureCleaners(){
 		List<StructureCleaner> cleaners = new ArrayList<StructureCleaner>();
 		Integer[] rooms = {35,21,17,28};		
@@ -60,6 +70,13 @@ public class CleanerServiceTest {
 		List<StructureCleaner> cleaners = new ArrayList<StructureCleaner>();
 		Integer[] rooms = {24,28};		
 		cleaners.add(new StructureCleaner(rooms[0], 2,1));
+		cleaners.add(new StructureCleaner(rooms[1], 2,1));
+		return cleaners;
+	}
+	
+	private List<StructureCleaner> mockNegativeStructureCleaners(){
+		List<StructureCleaner> cleaners = new ArrayList<StructureCleaner>();
+		Integer[] rooms = {-24,28};		
 		cleaners.add(new StructureCleaner(rooms[1], 2,1));
 		return cleaners;
 	}
