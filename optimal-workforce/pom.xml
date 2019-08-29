@@ -9,11 +9,11 @@
 		<version>2.1.7.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.workforce</groupId>
-	<artifactId>optimal-workforce</artifactId>
+	<groupId>com.allocator</groupId>
+	<artifactId>optimal-resource-allocator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>optimal-workforce</name>
-	<description>Demo project for Workforce</description>
+	<name>optimal-resource-allocator</name>
+	<description>Optimal Resource Allocator</description>
 
 	<properties>
 		<java.version>1.8</java.version>

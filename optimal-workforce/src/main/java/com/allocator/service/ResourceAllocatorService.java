@@ -1,4 +1,4 @@
-package com.workforce.service;
+package com.allocator.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Service;
 
-import com.workforce.data.StructureCleaner;
+import com.allocator.data.StructureResource;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,21 +22,21 @@ import io.swagger.annotations.ApiOperation;
  */
 
 @Service
-@Api(value = "Clean Service", description = "Get optimal senior and junior cleaners of a structure")
-public class CleanerService {
+@Api(value = "Resource Allocator Service", description = "Get optimal senior and junior resources of a structure")
+public class ResourceAllocatorService {
 
-	@ApiOperation(value = "Get optimal number of seniors and juniors worker for a structures", response = List.class)
-	public List<StructureCleaner> getOptimizedCleaners(Integer[] rooms, int seniorCapacity, int juniorCapacity) {
+	@ApiOperation(value = "Get optimal number of seniors and juniors resource for a structures", response = List.class)
+	public List<StructureResource> getOptimizedResources(Integer[] rooms, int seniorCapacity, int juniorCapacity) {
 
-		List<StructureCleaner> cleaners = new ArrayList<StructureCleaner>();
-		Map<String, Cleaner> result= new HashMap<String, Cleaner>();
+		List<StructureResource> structureResources = new ArrayList<StructureResource>();
+		Map<String, StructureResource> result= new HashMap<String, StructureResource>();
 
 		Arrays.stream(rooms).forEach(room -> {
 			if(room != null && room.intValue() > 0) {
 				Integer[] newRoom = {room};
 				Map<String, Integer> tempMap = new HashMap<String, Integer>();
 
-				/*Each structure needs at least one senior cleaner, so according to number of input rooms, 
+				/*Each structure needs at least one senior resource, so according to number of input rooms, 
 				  initially we should allocate one senior to each room and divide the remaining capacity optimally 
 				 */ 
 				if(room > seniorCapacity) {
@@ -62,17 +62,17 @@ public class CleanerService {
 						String senior = temp.substring(temp.indexOf("-") + 1, temp.indexOf(":"));
 						String junior = temp.substring(temp.indexOf(":") + 1, temp.length());
 						Integer sValue = Integer.valueOf(senior);
-						result.put(String.valueOf(room), new Cleaner(room > seniorCapacity ? sValue + 1 : sValue , Integer.valueOf(junior)));
+						result.put(String.valueOf(room), new StructureResource(room, room > seniorCapacity ? sValue + 1 : sValue , Integer.valueOf(junior)));
 					}
 				});	
 
-				StructureCleaner structureCleaner = new StructureCleaner(room, 
-						result.get(String.valueOf(room)).getSeniorCleaner(), 
-						result.get(String.valueOf(room)).getJuniorCleaner());
-				cleaners.add(structureCleaner);
+				StructureResource structureResource = new StructureResource(room, 
+						result.get(String.valueOf(room)).getNumberOfSeniors(), 
+						result.get(String.valueOf(room)).getNumberOfJuniors());
+				structureResources.add(structureResource);
 			}
 		});
 
-		return cleaners;
+		return structureResources;
 	}
 }

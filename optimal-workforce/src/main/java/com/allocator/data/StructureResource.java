@@ -1,40 +1,25 @@
-package com.workforce.dto;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+package com.allocator.data;
 
 /**
  * @author mahnaz
  * @Aug 7, 2019
  *
  */
+public class StructureResource {
 
-public class StructureCleanerDto {
-
-	@JsonProperty("room")
-	@ApiModelProperty(notes = "number of romms in a structure")
 	private Integer room;
 
-	@JsonProperty("senior")
-	@ApiModelProperty(notes = "number of senior cleaners for every structure")
 	private Integer numberOfSeniors;
 
-	@JsonProperty("junior")
-	@ApiModelProperty(notes = "number of junior cleaners for every structure")
 	private Integer numberOfJuniors;
 
-	public StructureCleanerDto(Integer room, Integer numberOfSeniors, Integer numberOfJuniors) {
+	public StructureResource(Integer room, Integer numberOfSeniors, Integer numberOfJuniors) {
 		super();
 		this.room = room;
 		this.numberOfSeniors = numberOfSeniors;
 		this.numberOfJuniors = numberOfJuniors;
 	}
 
-	/**
-	 * Get room
-	 * @return room
-	 **/	
 	public Integer getRoom() {
 		return room;
 	}
@@ -43,10 +28,6 @@ public class StructureCleanerDto {
 		this.room = room;
 	}
 
-	/**
-	 * Get numberOfSeniors
-	 * @return numberOfSeniors
-	 **/
 	public Integer getNumberOfSeniors() {
 		return numberOfSeniors;
 	}
@@ -55,10 +36,6 @@ public class StructureCleanerDto {
 		this.numberOfSeniors = numberOfSeniors;
 	}
 
-	/**
-	 * Get numberOfJuniors
-	 * @return numberOfJuniors
-	 **/
 	public Integer getNumberOfJuniors() {
 		return numberOfJuniors;
 	}
@@ -66,13 +43,7 @@ public class StructureCleanerDto {
 	public void setNumberOfJuniors(Integer numberOfJuniors) {
 		this.numberOfJuniors = numberOfJuniors;
 	}
-
-	@Override
-	public String toString() {
-		return "room=" + room + "{senior:" + numberOfSeniors + ", junior:"
-				+ numberOfJuniors + "}";
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,7 +62,7 @@ public class StructureCleanerDto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		StructureCleanerDto other = (StructureCleanerDto) obj;
+		StructureResource other = (StructureResource) obj;
 		if (numberOfJuniors == null) {
 			if (other.numberOfJuniors != null)
 				return false;
@@ -108,5 +79,11 @@ public class StructureCleanerDto {
 		} else if (!room.equals(other.room))
 			return false;
 		return true;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "room=" + room + "{senior:" + numberOfSeniors + ", junior:"
+				+ numberOfJuniors + "}";
+	}
 }

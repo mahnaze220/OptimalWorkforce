@@ -1,4 +1,4 @@
-package com.workforce.configuration;
+package com.allocator.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(Predicates.not(RequestHandlerSelectors.basePackage("com.workforce.CleanerController")))
+				.apis(Predicates.not(RequestHandlerSelectors.basePackage("com.allocator.api.ResourceAllocatorController")))
 				.build();
 	}
 

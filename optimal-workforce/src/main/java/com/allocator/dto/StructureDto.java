@@ -1,4 +1,4 @@
-package com.workforce.dto;
+package com.allocator.dto;
 
 import java.util.Arrays;
 
@@ -19,11 +19,11 @@ public class StructureDto {
 	private Integer[] rooms;
 
 	@JsonProperty("senior_capacity")
-	@ApiModelProperty(notes = "capacity of senior cleaner")
+	@ApiModelProperty(notes = "capacity of senior resource")
 	private Integer seniorCapacity;
 
 	@JsonProperty("junior_capacity")
-	@ApiModelProperty(notes = "capacity of junior cleaner")
+	@ApiModelProperty(notes = "capacity of junior resource")
 	private Integer juniorCapacity;
 
 	public StructureDto(Integer[] rooms, Integer seniorCapacity, Integer juniorCapacity) {
@@ -71,7 +71,7 @@ public class StructureDto {
 
 	@Override
 	public String toString() {
-		return "StructureCleanerDto [rooms=" + Arrays.toString(rooms) + ", seniorCapacity=" + seniorCapacity
+		return "StructureDto [rooms=" + Arrays.toString(rooms) + ", seniorCapacity=" + seniorCapacity
 				+ ", juniorCapacity=" + juniorCapacity + "]";
 	}
 
