@@ -1,2 +1,2 @@
 # OptimalWorkforce
-A optimization tool for getting optimal number of workers based on their capacities and available rooms
+A optimization tool for getting optimal number of resources based on their capacities.
